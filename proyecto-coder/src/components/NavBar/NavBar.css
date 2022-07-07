@@ -1,0 +1,25 @@
+.menu{
+    background-color: antiquewhite;
+}
+
+.menu__titulo{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.menu__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+}
+
+.menu__container__botones{
+    margin: 10px;
+    padding: 5px;
+
+}
+
+.menu__container__botones:hover{
+    color: orange;
+}

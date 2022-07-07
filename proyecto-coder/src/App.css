@@ -1,4 +1,19 @@
-.App {
+*{
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -40,3 +55,4 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+ */
