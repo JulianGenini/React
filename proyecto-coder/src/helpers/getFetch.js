@@ -13,33 +13,3 @@ export const getFetch = () => {
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* export const getFetch = (id) => {
-    if (id) {
-        return new Promise ((resolve, reject)=>{
-            setTimeout(()=>{
-                resolve(productos.find(producto => producto.id === id))
-            }, 3000)
-        })
-    } else 
-} */

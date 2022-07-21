@@ -1,2 +1,9 @@
-// componente destinado a mostrar info breve del producto
-//hacer un <a> que diga "mas detalles del producto"
+import React from 'react'
+
+const Item = () => {
+  return (
+    <div>Item</div>
+  )
+}
+
+export default Item

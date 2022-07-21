@@ -6,18 +6,29 @@ import { getFetch } from '../../helpers/getFetch'
 
 const ItemList = () => {
     const [productos, setProductos] = useState([])
+    //msj cargando
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         getFetch()
             .then(respuesta => setProductos(respuesta))
             .catch(err => console.log(err))
-            .finally(() => console.log('finally'))
+            .finally(() => setLoading(false))
     }, [])
 
-    console.log(productos);
-
-
     return (
-        <div>ItemList</div>
+        <div>
+            {loading ? <p>Cargando...</p>
+                :
+                productos?.map(producto => 
+                
+                <div key={producto.id} className='tarjeta'>
+                    <h3>{producto.nombre}</h3>
+                    <img src={producto.foto} alt="" />
+                           
+                </div> )}
+        </div>
     )
 }
+
+export default ItemList
