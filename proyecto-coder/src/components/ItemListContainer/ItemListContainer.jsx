@@ -1,15 +1,32 @@
-import ItemCount from '../ItemCount/ItemCount'
-import './ItemListContainer.css'
+import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { getFetch } from '../../helpers/getFetch'
+import ItemList from '../ItemList/ItemList'
 
-const ItemListContainer = ({ saludo }) => {
-    const onAdd = (cant) => 
-    console.log(`Cantidad: ${cant}`)
+
+export const ItemListContainer = () => {
+  const [productos, setProductos] = useState([])
+  //msj cargando
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    getFetch()
+      .then(respuesta => setProductos(respuesta))
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+  }, [])
+
 
   return (
-    <div className='saludo'> {saludo}
-      <ItemCount initial={1} stock={10} onAdd={onAdd}/>
-    </div>
+    <div>
+      {
+        loading ? <p>Cargando...</p>
+          :
+          <ItemList productos={productos}/>
+      }
 
+    </div>
   )
 }
 

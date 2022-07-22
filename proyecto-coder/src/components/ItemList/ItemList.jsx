@@ -1,32 +1,12 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { getFetch } from '../../helpers/getFetch'
+import Item from '../Item/Item'
+import './ItemList.css'
 
-
-const ItemList = () => {
-    const [productos, setProductos] = useState([])
-    //msj cargando
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        getFetch()
-            .then(respuesta => setProductos(respuesta))
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-    }, [])
+const ItemList = ({ productos }) => {
 
     return (
-        <div>
-            {loading ? <p>Cargando...</p>
-                :
-                productos?.map(producto => 
-                
-                <div key={producto.id} className='tarjeta'>
-                    <h3>{producto.nombre}</h3>
-                    <img src={producto.foto} alt="" />
-                           
-                </div> )}
+        <div className='contenedor'>
+            {productos?.map(producto => <Item key={producto.id} producto={producto} />)}
         </div>
     )
 }
