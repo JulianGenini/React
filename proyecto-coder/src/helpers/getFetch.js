@@ -5,10 +5,14 @@ let productos = [
     { id: '4', categoria: 'bebidas', nombre: 'agua', precio: 50, foto: 'https://placekitten.com/250/200' }
 ]
 
-export const getFetch = () => {
+export const getFetch = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(productos)
+            if (id) {
+                resolve(productos.find(producto => producto.id == id))
+            } else {
+                resolve(productos)
+            }
         }, 2000)
     })
 }

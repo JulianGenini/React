@@ -1,11 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getFetch } from '../../helpers/getFetch'
 import ItemList from '../ItemList/ItemList'
 
 
-export const ItemListContainer = () => {
+const ItemListContainer = () => {
   const [productos, setProductos] = useState([])
   //msj cargando
   const [loading, setLoading] = useState(true)
@@ -23,7 +22,7 @@ export const ItemListContainer = () => {
       {
         loading ? <p>Cargando...</p>
           :
-          <ItemList productos={productos}/>
+          <ItemList productos={productos} />
       }
 
     </div>
