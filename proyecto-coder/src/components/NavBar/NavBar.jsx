@@ -1,19 +1,36 @@
-import React from "react";
+import { Link, NavLink } from 'react-router-dom'
 import './NavBar.css'
 import CartWidget from "./CartWidget/CartWidget";
 
 const NavBar = () => {
   return (
     <nav className="menu">
-      <h1 className="menu__titulo">Resto Reserva</h1>
-      <ul className="menu__container">
-        <a href="#"><li className="menu__container__botones">Entradas</li></a>
-        <a href="#"><li className="menu__container__botones">Plato Principal</li></a>
-        <a href="#"><li className="menu__container__botones">Postre</li></a>
-        <a href="#"><li className="menu__container__botones">Bebidas</li></a>
-        <a href="#"><li className="menu__container__botones">Mi orden</li></a>
-        <CartWidget></CartWidget>
-      </ul>
+
+      <Link to='/'>
+        <h1 className="menu__titulo">Resto Reserva</h1>
+      </Link>
+
+      <div className="menu__container">
+
+        {/*   con nav link se activa un estilo nuevo al presionarlo  */}
+        <NavLink to='/categoria/entradas'
+          className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Entradas</NavLink>
+
+        <NavLink to='/categoria/plato_principal'
+          className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Plato Principal</NavLink>
+
+        <NavLink to='/categoria/postre'
+          className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Postre</NavLink>
+
+        <NavLink to='/categoria/bebidas'
+          className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Bebidas</NavLink>
+
+
+        {/*         <Link to='/cart'> */}
+        <CartWidget />
+        {/*         </Link> */}
+
+      </div>
     </nav>
 
   )

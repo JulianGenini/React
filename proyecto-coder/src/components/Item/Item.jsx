@@ -1,15 +1,18 @@
 import React from 'react'
-import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom'
 import './Item.css'
 
 const Item = ({ producto }) => {
-    const onAdd = (cant) =>
-        console.log(`Cantidad: ${cant}`)
+
     return (
         <div className='tarjeta'>
             <h3>{producto.nombre}</h3>
             <img src={producto.foto} alt="" />
-            <ItemCount initial={1} stock={10} onAdd={onAdd} />
+
+            <Link to={`/detalle/${producto.id}`}>
+                <button>Detalle del producto</button>
+            </Link>
+
         </div>
     )
 }
