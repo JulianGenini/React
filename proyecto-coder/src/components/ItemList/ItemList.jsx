@@ -8,6 +8,8 @@ const ItemList = ({ productos }) => {
         <div className='contenedor'>
             {productos?.map(producto => <Item key={producto.id} producto={producto} />)}
         </div>
+
+
     )
 }
 

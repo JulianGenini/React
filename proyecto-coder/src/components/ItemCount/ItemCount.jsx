@@ -20,6 +20,7 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
         onAdd(count)
     }
 
+
     return (
         <div>
             <label>{count}</label>
@@ -27,6 +28,7 @@ const ItemCount = ({ initial = 1, stock = 10, onAdd }) => {
             <button className='boton' onClick={handleAdd}>+</button>
             <button className='boton' onClick={handleRemove}>-</button>
             <br />
+            
             <button className='boton' onClick={handleAddToCart}>Agregar</button>
         </div>
     )
