@@ -4,33 +4,27 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
 import Cart from './components/Cart/Cart'
-import { CartContext } from './context/CartContext'
+import CartContextProvider from './context/CartContext'
+
 
 function App() {
 
   return (
 
     <BrowserRouter>
-      <CartContext.Provider value={{}}>
+      <CartContextProvider>
         <div className="App">
           <NavBar />
-
           <Routes>
             <Route index path='/' element={<ItemListContainer />} />
             <Route path='/categoria/:categoriaId' element={<ItemListContainer />} />
-
-
             <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
-
             <Route path='/cart' element={<Cart />} />
-
-
             {/* todas las rutas que no esten definidas las redirecciona a la raiz*/}
             <Route path='*' element={<Navigate to='/' />} />
           </Routes>
-
         </div>
-      </CartContext.Provider>
+      </CartContextProvider>
     </BrowserRouter>
   )
 }

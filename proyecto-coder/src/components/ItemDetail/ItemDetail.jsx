@@ -1,15 +1,21 @@
 import { useState } from 'react'
+import { useCartContext } from '../../context/CartContext'
 import Boton from '../Boton/Boton'
 import ItemCount from '../ItemCount/ItemCount'
 
 const ItemDetail = ({ producto }) => {
 
+    const {agregarCarrito, cartList } = useCartContext()
+
+    const [finalizar, setFinalizar] = useState (true)
+
     const onAdd = (cant) => {
         console.log(`Cantidad: ${cant}`)
-        setInputType('input')
+        setFinalizar(false)
+        agregarCarrito({...producto, cantidad: cant})
     }
-
-    const [inputType, setInputType] = useState ('button')
+    
+    console.log(cartList);
 
     return (
         <div className='ItemDetail'>
@@ -17,8 +23,9 @@ const ItemDetail = ({ producto }) => {
             <p>Categoria: {producto.categoria}</p>
             <img src={producto.foto} alt="foto del producto" />
             <p>Precio: {producto.precio}</p>
-            {
-            inputType==='button' ?
+              
+        {
+            finalizar===true ?
             <ItemCount initial={1} stock={10} onAdd={onAdd} />
             :
             <Boton/>

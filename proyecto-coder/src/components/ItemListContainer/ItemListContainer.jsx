@@ -5,6 +5,9 @@ import { getFetch } from '../../helpers/getFetch'
 import ItemList from '../ItemList/ItemList'
 
 const ItemListContainer = () => {
+
+/*   convertirla en global
+ */  
   const [productos, setProductos] = useState([])
   //msj cargando
   const [loading, setLoading] = useState(true)
