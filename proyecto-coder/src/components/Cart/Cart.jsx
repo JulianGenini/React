@@ -9,13 +9,13 @@ const Cart = () => {
       <h3>Resumen de la compra</h3>
       <ul>
         {cartList.map(item => (
-          <li key={item.id}>
-            {item.nombre} {item.cantidad} Subtotal: {item.cantidad * item.precio} 
+          <li key={item.prod.id}>
+            {item.prod.nombre} {item.prod.cantidad} Subtotal: {item.cantidad * item.prod.precio}
           </li>
         ))}
       </ul>
 
-          <button onClick={vaciarCarrito}>Vaciar el carrito</button>
+      <button onClick={vaciarCarrito}>Vaciar el carrito</button>
 
     </div>
   )
