@@ -13,32 +13,48 @@ const CartContextProvider = ({ children }) => {
         setCartList([])
     }
 
-    //falta no aceptar duplicados y mantener consistencia
-    const agregarCarrito = (prod, count) => {
+    //precio total
+    const precioTotal = () => {
+        return cartList.reduce((acumPrecio, prodObj) => acumPrecio = acumPrecio + (prodObj.precio * prodObj.cantidad) , 0)
+    }
 
-        setCartList((prev) => {
-            const isProdInCart = prev.find((cartList) => cartList.prod.id === prod.id)
-            let cantidad = count
-            if (isProdInCart) {
-                return cartList.map((currentProd) =>
-                    currentProd.prod.id === prod.id
-                        ? { prod, cantidad: currentProd.cantidad + count }
-                        :currentProd
-                )
-            }
-            return [...prev, {prod, cantidad}]
-        })
+    //cantidad total
 
-        /* setCartList([
-            ...cartList,
-            prod]) */
+    const cantidadTotal = ()=> {
+        return cartList.reduce( (contador, prodObjeto) => contador += prodObjeto.cantidad , 0 )
+    }
+
+    //borrar un producto del carrito
+
+    const eliminarProducto = (id) => {
+        setCartList (cartList.filter (prod => prod.id != id ))
+    }
+
+    //no aceptar duplicados y mantener consistencia
+    const agregarCarrito = (prod) => {
+        const idx = cartList.findIndex(producto => producto.id === prod.id)
+        if (idx != -1) {
+            //existe en el carrito
+            let cant = cartList[idx].cantidad
+            cartList[idx].cantidad = cant + prod.cantidad
+            setCartList([ ...cartList ]) 
+
+        } else {
+            //no existe
+            setCartList([
+                ...cartList,
+                prod])
+        }
     }
 
     return (
         <CartContext.Provider value={{
             cartList,
             agregarCarrito,
-            vaciarCarrito
+            vaciarCarrito,
+            precioTotal,
+            cantidadTotal,
+            eliminarProducto
         }}>
             {children}
         </CartContext.Provider>

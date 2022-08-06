@@ -2,18 +2,24 @@ import { useCartContext } from "../../context/CartContext"
 
 const Cart = () => {
 
-  const { cartList, vaciarCarrito } = useCartContext()
+  const { cartList, vaciarCarrito, precioTotal, eliminarProducto } = useCartContext()
 
   return (
     <div>
       <h3>Resumen de la compra</h3>
-      <ul>
+      <div>
         {cartList.map(item => (
-          <li key={item.prod.id}>
-            {item.prod.nombre} {item.prod.cantidad} Subtotal: {item.cantidad * item.prod.precio}
-          </li>
+          <div key={item.id}>
+            <img src={item.foto} alt="foto producto" />
+            Producto: {item.nombre} Cantidad: {item.cantidad} Subtotal: {item.cantidad * item.precio}
+            <button onClick={ () => eliminarProducto (item.id)}>Eliminar producto</button>
+          </div>
         ))}
-      </ul>
+
+      </div>
+          <div>
+            <h4>Precio total: {precioTotal() != 0 && `Precio Total: ${precioTotal}`}</h4>
+          </div>
 
       <button onClick={vaciarCarrito}>Vaciar el carrito</button>
 
