@@ -12,8 +12,8 @@ const CartWidget = () => {
       <div><Link to='/cart'>
 
         {cantidadTotal() != 0 && cantidadTotal()}
-        
-        </Link>
+
+      </Link>
 
       </div>
     </div>
