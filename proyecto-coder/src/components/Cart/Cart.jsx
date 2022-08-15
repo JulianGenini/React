@@ -1,14 +1,37 @@
 import { useCartContext } from "../../context/CartContext"
-
+import { addDoc, collection, getFirestore  } from "Firebase/firestore"
+ 
 const Cart = () => {
 
   const { cartList, vaciarCarrito, precioTotal, eliminarProducto } = useCartContext()
+  const generateOrder = (e) => {
+    e.preventDefault()
+
+    const order = {}
+    order.buyer = { email: 'asd@asd.com', name: 'Julian', phone: '154521' }
+    order.productos = cartList.map(prod => {
+      return {
+        product: prod.nombre,
+        id: prod.id,
+        price: prod.price
+      }
+    })
+
+    order.total = precioTotal()
+    
+    //guardar orden en db
+
+    const db = getFirestore()
+    const queryOrders = collection(db, 'orders')
+    addDoc(queryOrders, order)
+      .then(resp =>console.log(resp))
+
+  }
 
   if (precioTotal() != 0) {
     return (
       <div>
         <h3>Resumen de la compra</h3>
-
 
         <div>
           {cartList.map(item => (
@@ -26,16 +49,25 @@ const Cart = () => {
 
         <button onClick={vaciarCarrito}>Vaciar el carrito</button>
 
+        <div>
+          <form onSubmit={generateOrder}>
+
+          <button type="submit">Crear la orden</button>
+
+          </form>
+          
+        </div>
+
       </div>
+
     )
 
   } else {
-
-    return(
+    return (
       <h2>El carrito está vacío</h2>
     )
-    
   }
+
 
 }
 
