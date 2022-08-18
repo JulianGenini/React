@@ -1,9 +1,11 @@
 import { useCartContext } from "../../context/CartContext"
-import { addDoc, collection, getFirestore  } from "Firebase/firestore"
- 
+import { addDoc, collection, getFirestore } from "Firebase/firestore"
+import { useState } from "react"
+
 const Cart = () => {
 
   const { cartList, vaciarCarrito, precioTotal, eliminarProducto } = useCartContext()
+  const [id, setId] = useState('')
   const generateOrder = (e) => {
     e.preventDefault()
 
@@ -13,22 +15,30 @@ const Cart = () => {
       return {
         product: prod.nombre,
         id: prod.id,
-        price: prod.price
+        price: prod.precio
       }
     })
 
     order.total = precioTotal()
-    
-    //guardar orden en db
+
+
+      //guardar orden en db
 
     const db = getFirestore()
     const queryOrders = collection(db, 'orders')
     addDoc(queryOrders, order)
-      .then(resp =>console.log(resp))
+      .then(resp => setId(resp.id))
+      .catch(err => console.log(err))
+      //para mostrar el id:
+      //guardarlo en un estado
+      //con un condicional, cuando este el estado mostrarlo
+      .finally(() => vaciarCarrito())
 
   }
 
-  if (precioTotal() != 0) {
+ 
+  
+  if ({id}) {
     return (
       <div>
         <h3>Resumen de la compra</h3>
@@ -52,10 +62,14 @@ const Cart = () => {
         <div>
           <form onSubmit={generateOrder}>
 
-          <button type="submit">Crear la orden</button>
+            <button type="submit">Crear la orden</button>
 
           </form>
-          
+
+        </div>
+
+        <div>
+          {id.length > 0 && <h2>Su orden fue creada <br/>Transacción: {id}</h2>}
         </div>
 
       </div>
