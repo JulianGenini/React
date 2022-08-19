@@ -22,7 +22,7 @@ const Cart = () => {
     order.total = precioTotal()
 
 
-      //guardar orden en db
+    //guardar orden en db
 
     const db = getFirestore()
     const queryOrders = collection(db, 'orders')
@@ -36,9 +36,8 @@ const Cart = () => {
 
   }
 
- 
-  
-  if ({id}) {
+
+  if (cartList.length) {
     return (
       <div>
         <h3>Resumen de la compra</h3>
@@ -68,9 +67,9 @@ const Cart = () => {
 
         </div>
 
-        <div>
-          {id.length > 0 && <h2>Su orden fue creada <br/>Transacción: {id}</h2>}
-        </div>
+       {/*  <div>
+          {id.length > 0 && <h2>Su orden fue creada <br />Transacción: {id}</h2>}
+        </div> */}
 
       </div>
 
@@ -78,14 +77,20 @@ const Cart = () => {
 
   } else {
     return (
-      <h2>El carrito está vacío</h2>
+      <div>
+        {
+        
+        { id } != '' ? <h2>Su orden fue creada <br />Transacción: {id} </h2> : <h2>El carrito está vacío</h2> }
+
+      </div>
+    
+      
     )
   }
 
-
 }
 
-export default Cart
+        export default Cart
 
 
 
