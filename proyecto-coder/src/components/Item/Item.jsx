@@ -5,9 +5,9 @@ import './Item.css'
 const Item = ({ producto }) => {
 
     return (
-        <div className='tarjeta'>
+        <div className='card'>
             <h3>{producto.nombre}</h3>
-            <img src={producto.foto} alt="" />
+            <img src={producto.foto} alt="producto" />
 
             <Link to={`/detalle/${producto.id}`}>
                 <button>Detalle del producto</button>

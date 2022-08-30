@@ -1,0 +1,17 @@
+.ItemDetail {
+    display: flex;
+    background: antiquewhite;
+    border: 1px solid orange;
+    border-radius: 5px;
+    width: 500px;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: center;
+    align-items: center;
+}
+
+.ContainerItemDetail{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

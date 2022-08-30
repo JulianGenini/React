@@ -16,11 +16,6 @@ const ItemListContainer = () => {
   /*   capturar la categoria */
   const { categoriaId } = useParams()
 
-/*   //para Firebase
-  const [producto, setProducto] = useState({})
- */
-  console.log(categoriaId);
-
 
   const getProductsFirestore = (categoriaId) => {
     const db = getFirestore()

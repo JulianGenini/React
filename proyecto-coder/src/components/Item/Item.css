@@ -1,3 +1,14 @@
-.tarjeta{
+.card {
+    background: antiquewhite;
+    border: 1px solid orange;
+    border-radius: 5px;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.card img{
+    margin: 10px;
 }

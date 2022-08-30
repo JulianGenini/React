@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useCartContext } from '../../context/CartContext'
 import Boton from '../Boton/Boton'
 import ItemCount from '../ItemCount/ItemCount'
+import './ItemDetail.css'
 
 const ItemDetail = ({ producto }) => {
 
@@ -10,14 +11,13 @@ const ItemDetail = ({ producto }) => {
     const [finalizar, setFinalizar] = useState (true)
 
     const onAdd = (cant) => {
-        console.log(`Cantidad: ${cant}`)
         setFinalizar(false)
         agregarCarrito({...producto, cantidad: cant})
     }
     
-    console.log(cartList);
-
     return (
+
+        <div className='ContainerItemDetail'>
         <div className='ItemDetail'>
             <h3>{producto.nombre}</h3>
             <p>Categoria: {producto.categoria}</p>
@@ -31,6 +31,8 @@ const ItemDetail = ({ producto }) => {
             <Boton/>
             }
             
+        </div>
+
         </div>
     )
 }

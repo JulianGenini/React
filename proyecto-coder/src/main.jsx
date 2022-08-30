@@ -4,8 +4,6 @@ import App from './App'
 import { fireBaseConnections } from './firebase/config'
 import './index.css'
 
-
-
 fireBaseConnections()
 
 ReactDOM.createRoot(document.getElementById('root')).render(

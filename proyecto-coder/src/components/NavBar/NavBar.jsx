@@ -13,16 +13,16 @@ const NavBar = () => {
       <div className="menu__container">
 
         {/*   con nav link se activa un estilo nuevo al presionarlo  */}
-        <NavLink to='/categoria/entradas'
+        <NavLink to='/categoria/Entradas'
           className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Entradas</NavLink>
 
-        <NavLink to='/categoria/plato_principal'
+        <NavLink to='/categoria/Plato principal'
           className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Plato Principal</NavLink>
 
-        <NavLink to='/categoria/postre'
+        <NavLink to='/categoria/Postre'
           className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Postre</NavLink>
 
-        <NavLink to='/categoria/bebidas'
+        <NavLink to='/categoria/Bebidas'
           className={({ isActive }) => isActive ? 'boton-activo' : 'menu__container__botones'}>Bebidas</NavLink>
 
         <Link to='/cart'>
